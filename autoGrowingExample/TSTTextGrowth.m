@@ -73,8 +73,17 @@
 			intrinsicSize.height = usedRect.size.height;
 		}
 		
-		_lastIntrinsicSize = intrinsicSize;
-		_hasLastIntrinsicSize = YES;
+		// If you want to set a limit to how far the text view can grow.
+		if (intrinsicSize.height > 100) 
+		{
+                        intrinsicSize = _lastIntrinsicSize;
+                } 
+                else
+                {
+                        _lastIntrinsicSize = intrinsicSize;
+                        _hasLastIntrinsicSize = YES;
+                }
+                
 	}
 	
     return intrinsicSize;
